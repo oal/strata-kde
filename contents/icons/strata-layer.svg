@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MPL-2.0 -->
+<!-- Three stacked layers: the "strata" glyph, monochrome so isMask tinting works. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path fill="#000" d="M12 3 2.5 7.5 12 12l9.5-4.5L12 3Zm0 2.15 5.72 2.7L12 10.55l-5.72-2.7L12 5.15Z"/>
+  <path fill="#000" d="m2.5 12 1.8.85L12 15.7l7.7-2.85 1.8-.85v1.7L12 17.7l-9.5-3.9V12Z"/>
+  <path fill="#000" d="m2.5 16.5 1.8.85L12 20.2l7.7-2.85 1.8-.85v1.7L12 22.2l-9.5-3.9v-1.8Z"/>
+</svg>

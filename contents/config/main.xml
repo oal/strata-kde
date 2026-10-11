@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MPL-2.0 -->
+<!--
+  KConfigXT schema. Keys are reachable from QML as plasmoid.configuration.<name>,
+  and as cfg_<name> inside the configuration pages.
+-->
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+
+  <kcfgfile name=""/>
+
+  <group name="General">
+
+    <!-- Where the Strata engine serves its metrics. -->
+    <entry name="metricsUrl" type="String">
+      <label>Base URL of the Strata engine</label>
+      <default>http://127.0.0.1:8080</default>
+    </entry>
+
+    <!-- How often to poll /metrics. The endpoint is local and cheap. -->
+    <entry name="refreshIntervalSeconds" type="Int">
+      <label>Polling interval in seconds</label>
+      <default>2</default>
+      <min>1</min>
+      <max>60</max>
+    </entry>
+
+    <!--
+      What the panel shows: tok_s | gpu_util | gpu_mem | state.
+      Mirrored by Metrics.PANEL_METRICS in code/metrics.mjs.
+    -->
+    <entry name="panelMetric" type="String">
+      <label>Panel metric</label>
+      <default>tok_s</default>
+    </entry>
+
+  </group>
+</kcfg>

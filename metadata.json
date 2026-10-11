@@ -1,0 +1,24 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "oal@users.noreply.github.com",
+                "Name": "oal"
+            }
+        ],
+        "Category": "Utilities",
+        "Description": "Shows live stats from your Strata local LLM engine",
+        "Description[nb]": "Viser live-statistikk fra Strata-lokalmodellen",
+        "Icon": "strata-layer",
+        "Id": "com.github.oal.strata",
+        "License": "MPL-2.0",
+        "Name": "Strata stats",
+        "Name[nb]": "Strata-statistikk",
+        "Version": "0.1.0",
+        "Website": "https://github.com/oal/strata-kde"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-MainScript": "ui/main.qml"
+}
