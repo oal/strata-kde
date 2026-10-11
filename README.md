@@ -5,9 +5,6 @@ engine, straight from its `/metrics` endpoint: tokens per second, GPU
 utilisation, memory, temperature, prompt-cache hits, and the most recent
 requests.
 
-Part of a family of no-build-step Plasma widgets: pure QML + ES modules, no
-compiler, no root.
-
 ## What it does
 
 - **Panel readout** of one live metric — tok/s, GPU utilisation, GPU memory,
