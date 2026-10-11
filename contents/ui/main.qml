@@ -27,6 +27,10 @@ PlasmoidItem {
     property double lastFetchMs: 0
     property bool polling: false
 
+    /** Ticks every second so age displays re-evaluate (bindings cannot
+        track dependencies through function calls). */
+    property double nowMs: Date.now()
+
     readonly property int pollMs: Math.max(1, plasmoid.configuration.refreshIntervalSeconds) * 1000
     readonly property string metricsUrl: {
         const base = (plasmoid.configuration.metricsUrl || "").trim();
@@ -76,6 +80,16 @@ PlasmoidItem {
         running: true
         triggeredOnStart: true
         onTriggered: root.poll()
+    }
+
+    // One-second ticker driving nowMs; the freshness footer binds through it
+    // so "updated N s ago" climbs between polls.
+    Timer {
+        id: ticker
+        interval: 1000
+        repeat: true
+        running: true
+        onTriggered: root.nowMs = Date.now()
     }
 
     /* ---------------- polling ---------------- */
@@ -132,10 +146,11 @@ PlasmoidItem {
         poll();
     }
 
-    /** Seconds since the last successful fetch, for the freshness footer. */
+    /** Seconds since the last successful fetch, for the freshness footer.
+        Reads nowMs (not Date.now()) so QML bindings track it. */
     function ageSeconds(): real {
         if (!lastFetchMs)
             return -1;
-        return (Date.now() - lastFetchMs) / 1000.0;
+        return (nowMs - lastFetchMs) / 1000.0;
     }
 }
