@@ -92,10 +92,30 @@ PlasmaExtras.Representation {
                 Layout.fillWidth: true
                 Layout.topMargin: Kirigami.Units.smallSpacing
 
-                Kirigami.Badge {
+                // State pill: filled with the theme's highlight when the engine
+                // is working, outlined when idle. (Kirigami.Badge has no
+                // `positive` property on Plasma 6.6 — colour it explicitly.)
+                Rectangle {
                     visible: root.summary !== null
-                    text: root.summary ? root.summary.stateLabel : ""
-                    positive: root.summary ? root.summary.busy : false
+                    Layout.alignment: Qt.AlignVCenter
+                    width: stateLabel.implicitWidth + Kirigami.Units.smallSpacing * 2
+                    height: stateLabel.implicitHeight + Kirigami.Units.smallSpacing
+                    radius: height / 2
+                    color: root.summary && root.summary.busy
+                        ? Kirigami.Theme.highlightColor
+                        : "transparent"
+                    border.width: 1
+                    border.color: Kirigami.Theme.highlightColor
+
+                    PlasmaComponents.Label {
+                        id: stateLabel
+                        anchors.centerIn: parent
+                        font: Kirigami.Theme.smallFont
+                        text: root.summary ? root.summary.stateLabel : ""
+                        color: root.summary && root.summary.busy
+                            ? Kirigami.Theme.highlightedTextColor
+                            : Kirigami.Theme.highlightColor
+                    }
                 }
 
                 PlasmaComponents.Label {

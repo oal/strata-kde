@@ -15,9 +15,10 @@ Shape {
     property real maxValue: 0          // 0 -> auto-scale to the series
     property color lineColor: Kirigami.Theme.highlightColor
     antialiasing: true
-    preferredWidth: 120
-    preferredHeight: 28
-    fillMode: Shape.PreserveAspectFit
+
+    // Item-level sizing hints (Shape has no preferredWidth/Height).
+    implicitWidth: 120
+    implicitHeight: 28
 
     ShapePath {
         strokeWidth: 1.5
