@@ -5,10 +5,12 @@ import QtQuick
 /*
  * Raw HTTP transport for the Strata metrics client.
  *
- * Same shape as the other KDE widgets in this family: QML delivers
- * XMLHttpRequest callbacks only to handlers assigned from a QML context, so
- * the socket lives here and all parsing/shaping lives in code/metrics.mjs
- * where node can test it.
+ * Why this exists as QML rather than living in code/metrics.mjs with the
+ * rest of the client: QML delivers XMLHttpRequest callbacks only to
+ * handlers assigned from a QML context. A handler assigned from inside an
+ * ES module (.mjs) is silently never invoked — the request is sent, and
+ * readyState never advances. So the socket handling lives here, and all
+ * parsing/shaping lives in metrics.mjs where node can test it.
  *
  * get(url) returns {promise, abort()}:
  *   - resolves {status, text} for any completed response, 4xx/5xx included;
