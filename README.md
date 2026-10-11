@@ -5,11 +5,8 @@ engine, straight from its `/metrics` endpoint: tokens per second, GPU
 utilisation, memory, temperature, prompt-cache hits, and the most recent
 requests.
 
-Part of the same family as
-[`entur-kde`](https://github.com/oal/entur-kde),
-[`jottacloud-kde`](https://github.com/oal/jottacloud-kde) and
-[`pear-desktop-kde`](https://github.com/oal/pear-desktop-kde): pure QML + ES
-modules, no build step, no compiler, no root.
+Part of a family of no-build-step Plasma widgets: pure QML + ES modules, no
+compiler, no root.
 
 ## What it does
 
