@@ -74,6 +74,17 @@ in the same commit.
 plasmawindowed com.github.oal.strata    # QML errors print to stderr; clean = silent
 ```
 
+`plasmawindowed` renders only the *preferred* representation, so a clean run
+of the compact view says nothing about the popup. To smoke the full
+representation, copy the repo to /tmp, flip `preferredRepresentation` to
+`fullRepresentation` in main.qml, install under a different Id, run it, then
+`kpackagetool6 --remove` the test package.
+
+Qt 6 property gotchas hit here (qmllint is absent on this host, so the
+runtime is the linter): `Shape` has no `preferredWidth`/`preferredHeight`
+(use `implicitWidth`/`implicitHeight`), and Kirigami's `Badge` has no
+`positive` property on Plasma 6.6.
+
 Wayland windows are invisible to X11 screenshot tools, and the widget's
 short-lived polls rarely show in `ss`. To prove it polls, count TIME_WAIT
 sockets to port 8080 twice a few seconds apart:
